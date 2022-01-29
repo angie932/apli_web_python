@@ -1,0 +1,38 @@
+{% include 'header.html' %}
+    <h2>Formulario para actcualizar</h2>
+    {% for empleados in empleados %}
+        
+
+    <form method="post" action="/update" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header">
+                Editar empleados
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Datos del empleado</h5>
+                <p class="card-text">
+                    <input type="hidden" value=" {{empleados[0]}} " name="id" id="id">
+                    <div class="form-group">
+                        <label for="nombre">Nombres:</label>
+                        <input id="nombre" value=" {{empleados[1]}}"  class="form-control" type="text" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input id="correo" value=" {{empleados[2]}}" class="form-control" type="text" name="correo">
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Foto:</label>
+                        <br>
+                        <img class="img-thumbnail" width="100" src="{{url_for ('uploads', nombrefoto = empleados[3])}}" alt="">
+                        <input id="foto" class="form-control" type="file" name="foto">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Agregar" class="btn btn-success">
+                        <a href="{{url_for ('index')}}" class="btn btn-primary">Ingresar</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+{% include 'footer.html' %}
